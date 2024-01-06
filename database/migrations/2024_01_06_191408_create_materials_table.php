@@ -10,8 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('url', 500)->nullable()->change();
+        Schema::create('materials', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->foreignId('image_id')->constrained('images');
+            $table->timestamps();
         });
     }
 
@@ -20,8 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('url', 255)->nullable()->change();
-        });
+        Schema::dropIfExists('materials');
     }
 };

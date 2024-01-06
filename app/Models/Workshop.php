@@ -26,6 +26,11 @@ class Workshop extends Model
 
     public function images()
     {
-        return $this->belongsToMany(Image::class);
+        return $this->belongsToMany(Image::class, 'workshop_image');
+    }
+
+    public function activeWorkshops()
+    {
+        return $this->hasMany(ActiveWorkshop::class);
     }
 }

@@ -9,5 +9,12 @@ class Image extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['url'];
+
+    public function workshops()
+    {
+        return $this->belongsToMany(Workshop::class, 'workshop_image');
+    }
 }

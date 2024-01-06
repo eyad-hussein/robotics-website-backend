@@ -10,8 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->text('url')->nullable()->change();
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->text('url');
         });
     }
 
@@ -20,8 +21,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('url', 500)->nullable()->change();
-        });
+        Schema::dropIfExists('images');
     }
 };
