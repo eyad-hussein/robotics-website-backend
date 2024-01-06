@@ -33,7 +33,7 @@ class FirestoreService
 
         foreach ($objects as $object) {
             // Assuming all objects in the bucket are images
-            $imageUrls[] = $object->signedUrl(strtotime('+1 hour'));
+            $imageUrls[] = $object->signedUrl(strtotime('+100 years'));
         }
 
         return $imageUrls;

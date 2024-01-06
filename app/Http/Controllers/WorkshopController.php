@@ -28,15 +28,15 @@ class WorkshopController extends Controller
      */
     public function store(Request $request)
     {
-            $workshop = Workshop::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'start_date' => $request->start_date,
-                'location' => $request->location,
-                'duration' => $request->duration,
-            ]);
-    
-            return response()->json(['workshop' => $workshop], 200);
+        $workshop = Workshop::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'start_date' => $request->start_date,
+            'location' => $request->location,
+            'duration' => $request->duration,
+        ]);
+
+        return response()->json(['workshop' => $workshop], 200);
     }
 
     /**
@@ -49,6 +49,7 @@ class WorkshopController extends Controller
         return response(
             [
                 'workshop' => $workshop,
+                'images' => $workshop->images,
             ],
             200
         );
@@ -56,10 +57,11 @@ class WorkshopController extends Controller
 
     public function showActive()
     {
-        $workshops = Workshop::whereBetween('id', [1, 3])->get();
+        $activeWorkshops = Workshop::whereHas('activeWorkshops')->with('images')->get();
+
         return response(
             [
-                'workshops' => $workshops,
+                'activeWorkshops' => $activeWorkshops,
             ],
             200
         );
