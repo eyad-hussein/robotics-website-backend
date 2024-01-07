@@ -32,10 +32,25 @@ class FirestoreService
         $imageUrls = [];
 
         foreach ($objects as $object) {
-            // Assuming all objects in the bucket are images
             $imageUrls[] = $object->signedUrl(strtotime('+100 years'));
         }
 
         return $imageUrls;
+    }
+
+    public function getVideoUrlsFromStorge($bucketName)
+    {
+        $bucket = $this->storage->bucket($bucketName);
+
+        $objects = $bucket->objects(['prefix' => 'videos/']);
+
+        $videoUrls = [];
+
+        foreach ($objects as $object) {
+            // Assuming all objects in the bucket are videos
+            $videoUrls[] = $object->signedUrl(strtotime('+100 years'));
+        }
+
+        return $videoUrls;
     }
 }

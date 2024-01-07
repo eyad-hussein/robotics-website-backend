@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use \App\Models\Material;
+use \App\Models\Session;
 
-class MaterialSeeder extends Seeder
+class SessionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Material::factory(10)->create();
+        Session::factory(4)->create();
     }
 }

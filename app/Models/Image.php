@@ -17,4 +17,9 @@ class Image extends Model
     {
         return $this->belongsToMany(Workshop::class, 'workshop_image');
     }
+
+    public function sessions()
+    {
+        return $this->belongsTo(Session::class);
+    }
 }

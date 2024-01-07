@@ -33,4 +33,14 @@ class Workshop extends Model
     {
         return $this->hasMany(ActiveWorkshop::class);
     }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'workshop_material');
+    }
+
+    public function sessions()
+    {
+        return $this->belongsToMany(Session::class);
+    }
 }

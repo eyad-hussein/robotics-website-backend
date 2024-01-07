@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Services\FirestoreService;
 
-class ImageController extends Controller
+class VideoController extends Controller
 {
     protected $firestoreService;
 
@@ -17,10 +16,10 @@ class ImageController extends Controller
 
     public function index()
     {
-        $imageUrls = $this->firestoreService->getImageUrlsFromStorage("robotics-website-4a145.appspot.com");
+        $videoUrls = $this->firestoreService->getVideoUrlsFromStorge("robotics-website-4a145.appspot.com");
 
         return response()->json([
-            'data' => $imageUrls
+            'data' => $videoUrls
         ]);
     }
 }

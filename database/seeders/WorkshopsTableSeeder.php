@@ -40,14 +40,21 @@ class WorkshopsTableSeeder extends Seeder
         // $workshop3 = Workshop::find(6);
 
         // $image1 = Image::find(1);
-        $image2 = Image::find(2);
-        $image3 = Image::find(3);
+        // $image2 = Image::find(2);
+        // $image3 = Image::find(3);
 
         // $workshop1->images()->attach($image1);
         // $workshop2->images()->attach($image2);
         // $workshop3->images()->attach($image3);
 
-        $workshop1->images()->attach($image2);
-        $workshop1->images()->attach($image3);
+        // $workshop1->images()->attach($image2);
+        // $workshop1->images()->attach($image3);
+
+        // $workshop1->materials()->attach(2);
+        // $workshop1->materials()->attach(3);
+
+        $sessionIds = [1, 2, 3, 4];
+
+        $workshop1->sessions()->attach($sessionIds);
     }
 }
