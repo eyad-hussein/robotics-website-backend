@@ -41,6 +41,6 @@ class Workshop extends Model
 
     public function sessions()
     {
-        return $this->hasMany(Session::class);
+        return $this->belongsToMany(Session::class);
     }
 }

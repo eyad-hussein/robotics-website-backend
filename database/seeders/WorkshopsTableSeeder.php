@@ -50,8 +50,11 @@ class WorkshopsTableSeeder extends Seeder
         // $workshop1->images()->attach($image2);
         // $workshop1->images()->attach($image3);
 
-        $workshop1->materials()->attach(2);
-        $workshop1->materials()->attach(3);
+        // $workshop1->materials()->attach(2);
+        // $workshop1->materials()->attach(3);
 
+        $sessionIds = [1, 2, 3, 4];
+
+        $workshop1->sessions()->attach($sessionIds);
     }
 }

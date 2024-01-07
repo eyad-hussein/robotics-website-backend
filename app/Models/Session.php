@@ -38,6 +38,6 @@ class Session extends Model
 
     public function workshop()
     {
-        return $this->belongsTo(Workshop::class);
+        return $this->belongsToMany(Workshop::class);
     }
 }

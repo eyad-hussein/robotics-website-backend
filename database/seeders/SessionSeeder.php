@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use \App\Models\Session;
 
 class SessionSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class SessionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Session::factory(4)->create();
     }
 }
