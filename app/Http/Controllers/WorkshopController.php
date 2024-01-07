@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workshop;
 use Illuminate\Http\Request;
+use App\Models\Image;
 
 class WorkshopController extends Controller
 {
@@ -45,11 +46,18 @@ class WorkshopController extends Controller
     public function show(Request $request, Workshop $workshop)
     {
         $workshop = Workshop::find($request->id);
+        $materials = $workshop->materials;
 
+        $materialsImages = [];
+        foreach ($materials as $material) {
+            $materialsImages[] = Image::find($material->image_id);
+        }
         return response(
             [
                 'workshop' => $workshop,
                 'images' => $workshop->images,
+                'materials' => $materials,
+                'materialsImages' => $materialsImages
             ],
             200
         );

@@ -17,7 +17,6 @@ class ImageController extends Controller
 
     public function index()
     {
-        // return "hi";
         $imageUrls = $this->firestoreService->getImageUrlsFromStorage("robotics-website-4a145.appspot.com");
 
         return response()->json([

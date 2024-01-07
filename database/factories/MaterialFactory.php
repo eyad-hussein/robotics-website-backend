@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Material;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Material>
@@ -14,10 +15,15 @@ class MaterialFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $model = Material::class;
+
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->word,
+            'description' => $this->faker->paragraph,
+            'image_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Video extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'description',
-        'image_id',
+        'alt',
+        'url',
     ];
-    public function workshops()
+
+    public function session()
     {
-        return $this->belongsToMany(Workshop::class, 'workshop_material');
+        return $this->belongsTo(Session::class);
     }
+
 }
