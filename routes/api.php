@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,12 @@ Route::get('/workshops/active', [WorkshopController::class, 'showActive']);
 Route::get('/workshops/{id}', [WorkshopController::class, 'show']);
 
 Route::get('/images', [ImageController::class, 'index']);
+Route::get('/images/active', [ImageController::class, 'showMainCarouselImages']);
 
 Route::get('/videos', [VideoController::class, 'index']);
+
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/active', [PostController::class, 'showMainPosts']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
