@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\MainCarouselImage;
 
 class Image extends Model
 {
@@ -21,5 +22,15 @@ class Image extends Model
     public function sessions()
     {
         return $this->belongsTo(Session::class);
+    }
+
+    public function mainCarouselImages()
+    {
+        return $this->hasMany(MainCarouselImage::class);
+    }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
     }
 }

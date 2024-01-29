@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Services\FirestoreService;
+use App\Models\MainCarouselImage;
 
 class ImageController extends Controller
 {
@@ -22,5 +23,18 @@ class ImageController extends Controller
         return response()->json([
             'data' => $imageUrls
         ]);
+    }
+
+    public function showMainCarouselImages()
+    {
+        $mainCarouselImages = MainCarouselImage::with('image')->get();
+
+
+        return response(
+            [
+                'mainCarouselImages' => $mainCarouselImages,
+            ],
+            200
+        );
     }
 }
