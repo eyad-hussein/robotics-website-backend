@@ -10,10 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('main_carousel_images', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('image_id')->constrained();
-            $table->timestamps();
+        Schema::table('main_carousel_images', function (Blueprint $table) {
+            $table->integer('order')->after('image_id')->change();
         });
     }
 
@@ -22,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('main_carousel_images');
+        Schema::table('main_carousel_images', function (Blueprint $table) {
+            //
+        });
     }
 };

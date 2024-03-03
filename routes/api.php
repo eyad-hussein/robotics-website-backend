@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,20 +20,14 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-// Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+Route::get('/main/carousel-images', [HomePageController::class, 'getCarouselImages']);
+Route::post('/admin/main/carousel-images', [HomePageController::class, 'storeCarouselImage']);
+Route::delete('/admin/main/carousel-images/{id}', [HomePageController::class, 'deleteCarouselImage']);
 
-Route::get('/workshops/active', [WorkshopController::class, 'showActive']);
-Route::get('/workshops/{id}', [WorkshopController::class, 'show']);
+Route::get('/main/posts', [HomePageController::class, 'getPosts']);
+Route::post('/admin/main/posts', [HomePageController::class, 'storePost']);
+Route::delete('/admin/main/posts/{id}', [HomePageController::class, 'deletePost']);
 
-Route::get('/images', [ImageController::class, 'index']);
-Route::get('/images/active', [ImageController::class, 'showMainCarouselImages']);
-
-Route::get('/videos', [VideoController::class, 'index']);
-
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/active', [PostController::class, 'showMainPosts']);
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/main/meta-data', [HomePageController::class, 'getMetaData']);
+Route::post('/admin/main/meta-data', [HomePageController::class, 'storeMetaData']);
+Route::delete('/admin/main/meta-data/{id}', [HomePageController::class, 'deleteMetaData']);

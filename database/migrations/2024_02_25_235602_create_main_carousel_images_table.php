@@ -10,9 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('main_posts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('post_id')->constrained();
+        Schema::create('main_carousel_images', function (Blueprint $table) {
+            $table->foreignId('image_id')->constrained()->unique();
             $table->timestamps();
         });
     }
@@ -22,6 +21,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('main_posts');
+        Schema::dropIfExists('main_carousel_images');
     }
 };

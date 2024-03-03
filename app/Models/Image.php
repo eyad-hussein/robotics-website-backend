@@ -4,33 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MainCarouselImage;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Image extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $fillable = [
+        'url',
+        'alt',
+    ];
 
-    protected $fillable = ['url'];
-
-    public function workshops()
+    public function mainCarouselImage(): HasOne
     {
-        return $this->belongsToMany(Workshop::class, 'workshop_image');
+        return $this->hasOne(MainCarouselImage::class);
     }
 
-    public function sessions()
+    public function post(): HasOne
     {
-        return $this->belongsTo(Session::class);
-    }
-
-    public function mainCarouselImages()
-    {
-        return $this->hasMany(MainCarouselImage::class);
-    }
-
-    public function post()
-    {
-        return $this->belongsTo(Post::class);
+        return $this->hasOne(Post::class);
     }
 }

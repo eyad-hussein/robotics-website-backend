@@ -10,8 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->string('alt');
+        Schema::table('main_carousel_images', function (Blueprint $table) {
+            $table->integer('order');
         });
     }
 
@@ -20,8 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->dropColumn('alt');
+        Schema::table('main_carousel_images', function (Blueprint $table) {
+            //
         });
     }
 };

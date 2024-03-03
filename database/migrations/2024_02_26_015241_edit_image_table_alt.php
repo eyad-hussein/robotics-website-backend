@@ -10,11 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('workshop_material', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('workshop_id')->constrained();
-            $table->foreignId('material_id')->constrained();
-            $table->timestamps();
+        Schema::table('images', function (Blueprint $table) {
+            $table->string('alt')->default('i')->change();
         });
     }
 
@@ -23,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('workshop_material');
+        Schema::table('images', function (Blueprint $table) {
+            //
+        });
     }
 };

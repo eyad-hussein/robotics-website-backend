@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Post;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MainPost extends Model
 {
@@ -12,9 +12,9 @@ class MainPost extends Model
 
     protected $fillable = [
         'post_id',
+        'order',
     ];
-
-    public function post()
+    public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }

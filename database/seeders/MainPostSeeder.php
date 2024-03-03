@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\MainPost;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,17 +13,15 @@ class MainPostSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table("main_posts")->insert([
-            'post_id' => 1,
-        ]);
-        \DB::table("main_posts")->insert([
-            'post_id' => 3,
-        ]);
-        \DB::table("main_posts")->insert([
-            'post_id' => 5,
-        ]);
-        \DB::table("main_posts")->insert([
-            'post_id' => 6,
-        ]);
+        $this->call(
+            [
+                PostSeeder::class,
+            ]
+        );
+
+        MainPost::create(['post_id' => 1, 'order' => 1]);
+        MainPost::create(['post_id' => 2, 'order' => 4]);
+        MainPost::create(['post_id' => 3, 'order' => 3]);
+        MainPost::create(['post_id' => 4, 'order' => 2]);
     }
 }

@@ -12,10 +12,6 @@ class MainCarouselImageSeeder extends Seeder
      */
     public function run(): void
     {
-        $mainCarouselImagesIds = [8, 9, 10];
-
-        foreach ($mainCarouselImagesIds as $id) {
-            \DB::table("main_carousel_images")->insert(['image_id' => $id,]);
-        }
+        //
     }
 }
