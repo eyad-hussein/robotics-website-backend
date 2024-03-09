@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Interfaces\HomePageRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HomePageService
 {
@@ -45,7 +46,7 @@ class HomePageService
         $this->homePageRepository->deletePost($id);
     }
 
-    public function getMetaData(): Collection
+    public function getMetaData(): Response
     {
         return $this->homePageRepository->getMetaData();
     }

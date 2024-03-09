@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Services\S3StorageService;
+use Illuminate\Http\Response;
 
 
 class HomePageRepository extends BaseRepository implements HomePageRepositoryInterface
@@ -70,9 +71,14 @@ class HomePageRepository extends BaseRepository implements HomePageRepositoryInt
         $mainPost->delete();
     }
 
-    public function getMetaData(): Collection
+    public function getMetaData(): Response
     {
-        return MetaData::whereIn('name', ['members', 'projects', 'participants'])->get();
+        $data = MetaData::whereIn('name', ['members', 'projects', 'participants'])->get();
+        return response([
+            'members' => $data[0]['value'],
+            'participants' => $data[1]['value'],
+            'projects' => $data[2]['value'],
+        ]);
     }
 
     public function storeMetaData(Request $request): void

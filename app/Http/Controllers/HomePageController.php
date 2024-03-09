@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\HomePageService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HomePageController extends Controller
 {
@@ -45,7 +46,7 @@ class HomePageController extends Controller
         $this->homePageService->deletePost($id);
     }
 
-    public function getMetaData(): Collection
+    public function getMetaData(): Response
     {
         return $this->homePageService->getMetaData();
     }
