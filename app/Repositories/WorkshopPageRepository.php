@@ -20,7 +20,7 @@ class WorkshopPageRepository implements WorkshopPageRepositoryInterface
     }
     public function getWorkshops(): Collection
     {
-        return MainWorkshop::all();
+        return MainWorkshop::with('workshop.activity')->get();
     }
 
     // YET TO BE DONE
