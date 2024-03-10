@@ -3,17 +3,17 @@
 namespace App\Repositories;
 
 use App\Interfaces\HomePageRepositoryInterface;
-use App\Models\MainCarouselImage;
-use App\Models\MainPost;
+use App\Models\Image\MainCarouselImage;
+use App\Models\Post\MainPost;
 use App\Models\MetaData;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\Models\Image;
+use App\Models\Image\Image;
 use App\Services\S3StorageService;
 use Illuminate\Http\Response;
 
 
-class HomePageRepository extends BaseRepository implements HomePageRepositoryInterface
+class HomePageRepository implements HomePageRepositoryInterface
 {
     protected S3StorageService $s3StorageService;
 

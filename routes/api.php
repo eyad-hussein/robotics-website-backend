@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\WorkshopPageController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::delete('/admin/main/posts/{id}', [HomePageController::class, 'deletePost'
 Route::get('/main/meta-data', [HomePageController::class, 'getMetaData']);
 Route::post('/admin/main/meta-data', [HomePageController::class, 'storeMetaData']);
 Route::delete('/admin/main/meta-data/{id}', [HomePageController::class, 'deleteMetaData']);
+
+Route::get('/main/workshops', [WorkshopPageController::class, 'getWorkshops']);

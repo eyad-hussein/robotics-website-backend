@@ -7,6 +7,8 @@ use App\Repositories\BaseRepository;
 use App\Interfaces\BaseRepositoryInterface;
 use App\Interfaces\HomePageRepositoryInterface;
 use App\Repositories\HomePageRepository;
+use App\Interfaces\WorkshopPageRepositoryInterface;
+use App\Repositories\WorkshopPageRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(HomePageRepositoryInterface::class, HomePageRepository::class);
+        $this->app->bind(WorkshopPageRepositoryInterface::class, WorkshopPageRepository::class);
     }
 
     /**

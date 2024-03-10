@@ -10,6 +10,6 @@ interface BaseRepositoryInterface
     public function getAll(): Collection;
     public function getById(int $id): Model;
     public function delete(int $id): bool;
-    public function create(array $details): Model;
+    public function store(array $details): Model;
     public function update($id, array $newDetails): bool;
 }
