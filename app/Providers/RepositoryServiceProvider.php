@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\CourseRepositoryInterface;
+use App\Interfaces\MekatroPageRepositoryInterface;
+use App\Interfaces\VideoRepositoryInterface;
+use App\Repositories\CourseRepository;
+use App\Repositories\MekatroPageRepository;
+use App\Repositories\VideoRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\BaseRepository;
 use App\Interfaces\BaseRepositoryInterface;
@@ -20,6 +26,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(HomePageRepositoryInterface::class, HomePageRepository::class);
         $this->app->bind(WorkshopPageRepositoryInterface::class, WorkshopPageRepository::class);
+        $this->app->bind(VideoRepositoryInterface::class, VideoRepository::class);
+        $this->app->bind(CourseRepositoryInterface::class, CourseRepository::class);
+        $this->app->bind(MekatroPageRepositoryInterface::class, MekatroPageRepository::class);
     }
 
     /**

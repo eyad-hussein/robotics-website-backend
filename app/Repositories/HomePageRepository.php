@@ -42,7 +42,7 @@ class HomePageRepository implements HomePageRepositoryInterface
     public function deleteCarouselImage(int $id): void
     {
         $mainCarouselImage = MainCarouselImage::find($id);
-        $this->s3StorageService->deleteImage($mainCarouselImage->image->url);
+        $this->s3StorageService->delete($mainCarouselImage->image->url);
         $mainCarouselImage->image->delete();
         $mainCarouselImage->delete();
     }
@@ -66,7 +66,7 @@ class HomePageRepository implements HomePageRepositoryInterface
     public function deletePost(int $id): void
     {
         $mainPost = MainPost::find($id);
-        $this->s3StorageService->deleteImage($mainPost->image->url);
+        $this->s3StorageService->delete($mainPost->image->url);
         $mainPost->image->delete();
         $mainPost->delete();
     }

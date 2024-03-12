@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Post\Post;
+use App\Models\Course;
+use App\Models\Video\Video;
 
 class Image extends Model
 {
@@ -24,5 +26,15 @@ class Image extends Model
     public function post(): HasOne
     {
         return $this->hasOne(Post::class);
+    }
+
+    public function course(): HasOne
+    {
+        return $this->hasOne(Course::class);
+    }
+
+    public function video(): HasOne
+    {
+        return $this->hasOne(Video::class);
     }
 }
