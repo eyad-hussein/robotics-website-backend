@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post\Post;
+use App\Models\Workshop\MainWorkshop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostSeeder extends Seeder
+class MainWorkshopSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Post::factory(5)->create();
+        MainWorkshop::factory(3)->create();
     }
 }

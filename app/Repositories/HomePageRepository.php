@@ -3,16 +3,17 @@
 namespace App\Repositories;
 
 use App\Interfaces\HomePageRepositoryInterface;
-use App\Models\MainCarouselImage;
-use App\Models\MainPost;
+use App\Models\Image\MainCarouselImage;
+use App\Models\Post\MainPost;
 use App\Models\MetaData;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\Models\Image;
+use App\Models\Image\Image;
 use App\Services\S3StorageService;
+use Illuminate\Http\Response;
 
 
-class HomePageRepository extends BaseRepository implements HomePageRepositoryInterface
+class HomePageRepository implements HomePageRepositoryInterface
 {
     protected S3StorageService $s3StorageService;
 
@@ -41,7 +42,7 @@ class HomePageRepository extends BaseRepository implements HomePageRepositoryInt
     public function deleteCarouselImage(int $id): void
     {
         $mainCarouselImage = MainCarouselImage::find($id);
-        $this->s3StorageService->deleteImage($mainCarouselImage->image->url);
+        $this->s3StorageService->delete($mainCarouselImage->image->url);
         $mainCarouselImage->image->delete();
         $mainCarouselImage->delete();
     }
@@ -65,14 +66,19 @@ class HomePageRepository extends BaseRepository implements HomePageRepositoryInt
     public function deletePost(int $id): void
     {
         $mainPost = MainPost::find($id);
-        $this->s3StorageService->deleteImage($mainPost->image->url);
+        $this->s3StorageService->delete($mainPost->image->url);
         $mainPost->image->delete();
         $mainPost->delete();
     }
 
-    public function getMetaData(): Collection
+    public function getMetaData(): Response
     {
-        return MetaData::whereIn('name', ['members', 'projects', 'participants'])->get();
+        $data = MetaData::whereIn('name', ['members', 'projects', 'participants'])->get();
+        return response([
+            'members' => $data[0]['value'],
+            'participants' => $data[1]['value'],
+            'projects' => $data[2]['value'],
+        ]);
     }
 
     public function storeMetaData(Request $request): void

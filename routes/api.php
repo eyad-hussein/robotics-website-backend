@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\MekatroPageController;
+use App\Http\Controllers\WorkshopPageController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +34,13 @@ Route::delete('/admin/main/posts/{id}', [HomePageController::class, 'deletePost'
 Route::get('/main/meta-data', [HomePageController::class, 'getMetaData']);
 Route::post('/admin/main/meta-data', [HomePageController::class, 'storeMetaData']);
 Route::delete('/admin/main/meta-data/{id}', [HomePageController::class, 'deleteMetaData']);
+
+Route::get('/main/workshops', [WorkshopPageController::class, 'getWorkshops']);
+
+Route::get('/main/mekatro/videos', [MekatroPageController::class, 'getVideos']);
+
+Route::post('/courses/{courseId}/videos', [VideoController::class, 'storeVideoToCourse']);
+Route::get('/courses/{courseId}/videos', [VideoController::class, 'getVideosOfCourse']);
+
+
+Route::post('/courses', [CourseController::class, 'store']);

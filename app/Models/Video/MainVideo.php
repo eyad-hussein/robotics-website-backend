@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Video;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class MainPost extends Model
+class MainVideo extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'post_id',
+        'video_id',
         'order',
     ];
-    public function post(): BelongsTo
+
+    public function video(): BelongsTo
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Video::class);
     }
 }

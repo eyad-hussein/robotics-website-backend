@@ -30,7 +30,7 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->destroy($id);
     }
 
-    public function create(array $details): Model
+    public function store(array $details): Model
     {
         return $this->model->create($details);
     }

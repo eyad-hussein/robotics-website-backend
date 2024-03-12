@@ -13,17 +13,26 @@ class S3StorageService
     {
         $this->disk = Storage::disk('s3');
     }
-    public function storeImage(UploadedFile $file, string $path, string $name): string
+    // public function storeImage(UploadedFile $file, string $path, string $name): string
+    // {
+    //     try {
+    //         return $file->storeAs($path, $name . '.' . $file->extension(), 's3');
+    //     } catch (\Exception $e) {
+    //         dd($e->getMessage());
+    //     }
+    // }
+
+    public function delete(string $path): void
+    {
+        $this->disk->delete($path);
+    }
+
+    public function store(UploadedFile $file, string $path, string $name): string
     {
         try {
-            return $file->storeAs($path . $name, $name . '.' . $file->extension(), 's3');
+            return $file->storeAs($path, $name . '.' . $file->extension(), 's3');
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
-    }
-
-    public function deleteImage(string $path): void
-    {
-        $this->disk->delete($path);
     }
 }
